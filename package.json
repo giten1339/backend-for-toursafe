@@ -2,13 +2,18 @@
   "name": "web-app",
   "version": "1.0.0",
   "description": "Tourist app",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [
     "javascirpt"
   ],
   "author": "Gitendra",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5"
+  }
 }
