@@ -7,6 +7,7 @@ import userRouter from './routes/user.routes.js';
 import currencyRoutes from './routes/currencyRoutes.js';
 import weatherRoutes from './routes/weatherRoutes.js';
 import { fetchExchangeRates } from './db/services/currencyservice.js';
+import reservationRoutes from './routes/reservationRoutes.js'; // New import
 
 const app = express();
 
@@ -34,6 +35,8 @@ app.use(cookieParser());
 app.use('/api/v1/users', userRouter);
 app.use('/api', currencyRoutes);
 app.use('/api', weatherRoutes); // New route
+app.use('/api', reservationRoutes); // New route
+
 
 // Fetch exchange rates initially
 fetchExchangeRates();
