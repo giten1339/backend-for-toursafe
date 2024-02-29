@@ -5,7 +5,6 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import mongoose, { trusted } from "mongoose";
 import Jwt from "jsonwebtoken";
-import { User } from "../models/user.model.js";
 
 
 const generateAccessAndRefreshTokens = async(userId) =>
@@ -62,7 +61,7 @@ const existedUser = await User.findOne({
         coverImage: coverImage?.url || "",
         email,
         password,
-        username: username.toLowercase()
+        username: username.toLowerCase()
     })
     const createdUser = await User.findById(user._id).select(
         "-password -refreshToken "

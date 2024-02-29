@@ -14,7 +14,6 @@ import { loginUser,
 import { upload } from "../middlewares/multer.middleware.js";
 import { verify } from "jsonwebtoken";
 const router= Router()
-import { updateUserPreferences, getUserPreferences } from '../controllers/user.controller.js';
 
 
 router.route("/register").post( 
@@ -45,8 +44,8 @@ router.route("/history").get(verifyJWT, getWatchHistory)
 
 
 // DARK-MODE FEATURE
-router.route("/Dark-mode").put(verifyJWT, updateUserPreferences)
-router.route("/Dark-mode").put(verifyJWT, getUserPreferences)
+router.route("/user/preferences").put(verifyJWT, updateUserPreferences)
+router.route("/user/preferences").put(verifyJWT, getUserPreferences)
 
 
 
