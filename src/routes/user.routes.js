@@ -8,11 +8,14 @@ import { loginUser,
     updateUserAvatar, 
     updateUserCoverImage, 
     getUserChannelProfile, 
-    getWatchHistory 
+    getWatchHistory ,
+    getUserPreferences, updateUserPreferences
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verify } from "jsonwebtoken";
 const router= Router()
+import { updateUserPreferences, getUserPreferences } from '../controllers/user.controller.js';
+
 
 router.route("/register").post( 
    upload.fields([
@@ -38,6 +41,12 @@ router.route("/avatar").patch(verifyJWT, upload.single("avatar"), updateUserAvat
 router.route("/cover-image").patch(verifyJWT, upload.single("coverImage"), updateUserCoverImage)
 router.route("/channel/:username").get(verifyJWT, getUserChannelProfile)
 router.route("/history").get(verifyJWT, getWatchHistory)
+
+
+
+// DARK-MODE FEATURE
+router.route("/Dark-mode").put(verifyJWT, updateUserPreferences)
+router.route("/Dark-mode").put(verifyJWT, getUserPreferences)
 
 
 

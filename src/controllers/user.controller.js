@@ -5,6 +5,9 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import mongoose, { trusted } from "mongoose";
 import Jwt from "jsonwebtoken";
+import { User } from "../models/user.model.js";
+
+
 const generateAccessAndRefreshTokens = async(userId) =>
 {
     try {
@@ -423,6 +426,33 @@ const getWatchHistory = asyncHandler(async(req, res,) => {
     )
 })
 
+// DARK- MODE FEATURE
+
+const updateUserPreferences = async (req, res) => {
+    try {
+      const { darkMode } = req.body;
+      const userId = req.user.id; // Assuming you have authentication middleware to get the user ID
+  
+      await User.findByIdAndUpdate(userId, { darkMode });
+      res.status(200).json({ message: 'User preferences updated successfully' });
+    } catch (error) {
+      console.error('Error updating user preferences:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  const getUserPreferences = async (req, res) => {
+    try {
+      const userId = req.user._id; // Assuming you have authentication middleware to get the user ID
+      const user = await User.findById(userId);
+      res.status(200).json({ darkMode: user.darkMode });
+    } catch (error) {
+      console.error('Error retrieving user preferences:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+
+
 
 export {
    registerUser ,
@@ -434,7 +464,8 @@ export {
    updateUserAvatar,
    updateUserCoverImage,
    getUserChannelProfile,
-   getWatchHistory
+   getWatchHistory,
+   updateUserPreferences
 
 }
 

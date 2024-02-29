@@ -85,4 +85,15 @@ userSchema.methods.generateRefreshToken = function(){
     )
 }
 
+
+// DARK-MODE FEATURE
+
+const userSchema = new mongoose.Schema({
+    username: String,
+    email: String,
+    password: String,
+    darkMode: { type: Boolean, default: false } // Add dark mode preference field
+  });
+
+
 export const User = mongoose.model("User", userSchema)
