@@ -42,10 +42,10 @@ const userSchema = new Schema({
     refreshToken: {
         type: String
     },
-    darkMode: {
-        type: Boolean,
-        default: false
-    }
+    // darkMode: {
+    //     type: Boolean,
+    //     default: false
+    // }
 }, { timestamps: true });
 
 userSchema.pre("save", async function(next) {

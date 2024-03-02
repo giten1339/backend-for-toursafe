@@ -9,9 +9,9 @@ import {
   updateUserAvatar,
   updateUserCoverImage,
   getUserChannelProfile,
-  getWatchHistory,
-  getUserPreferences,
-  updateUserPreferences,
+  getWatchHistory
+  // getUserPreferences,
+  // updateUserPreferences,
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verify } from "jsonwebtoken";
@@ -48,7 +48,7 @@ router.route("/channel/:username").get(verifyJWT, getUserChannelProfile);
 router.route("/history").get(verifyJWT, getWatchHistory);
 
 // DARK-MODE FEATURE
-router.route("/user/preferences").put(verifyJWT, updateUserPreferences);
-router.route("/user/preferences").put(verifyJWT, getUserPreferences);
+// router.route("/user/preferences").put(verifyJWT, updateUserPreferences);
+// router.route("/user/preferences").put(verifyJWT, getUserPreferences);
 
 export default router;
