@@ -1,16 +1,18 @@
 import multer from "multer";
 
+// Define storage settings for multer
 const storage = multer.diskStorage({
+    // Set destination folder for uploaded files
     destination: function (req, file, cb) {
-        cb(null, "./public/temp")
+        cb(null, "./public/temp");
     },
+    // Set filename for uploaded files
     filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
 
-        cb(null, file.originalname)
-    } 
-        
-    })
-
-    export const upload = multer({
-         storage: storage
-        })
+// Export multer instance with defined storage settings
+export const upload = multer({
+    storage: storage
+});

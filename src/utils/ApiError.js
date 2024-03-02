@@ -11,7 +11,7 @@ class ApiError extends Error{
         this.message = message
         this.success = false;
         this.errors = errors
-
+        // Set stack trace if provided, otherwise capture stack trace
         if (stack){
             this.stack = stack
         } else{
@@ -19,4 +19,5 @@ class ApiError extends Error{
         }
     }
 }
+// Exporting ApiError class
 export {ApiError}

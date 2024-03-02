@@ -10,13 +10,12 @@ import {
   updateUserCoverImage,
   getUserChannelProfile,
   getWatchHistory
-  // getUserPreferences,
-  // updateUserPreferences,
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
-import { verify } from "jsonwebtoken";
+import { verifyJWT } from "../middlewares/auth.middleware.js"; // Importing JWT verification middleware
 const router = Router();
 
+// Routes for registering a new user
 router.route("/register").post(
   upload.fields([
     {
@@ -24,28 +23,26 @@ router.route("/register").post(
       maxcount: 1,
     },
     {
-      namae: "coverImage",
+      name: "coverImage",
       maxCount: 1,
     },
   ]),
   registerUser
 );
+
+// Route for logging in a user
 router.route("/login").post(loginUser);
 
-// secured routes
-router.route("/logout").post(verifyJWT, logoutUser);
-router.route("/refresh-token").post(refreshAccessToken);
-router.route("/change-password").post(verifyJWT, changeCurrentPassword);
-router.route(".current-user").get(verifyJWT, getCurrentUser);
-router.route("/update-account").patch(verifyJWT, updateAccountDetails);
-router
-  .route("/avatar")
-  .patch(verifyJWT, upload.single("avatar"), updateUserAvatar);
-router
-  .route("/cover-image")
-  .patch(verifyJWT, upload.single("coverImage"), updateUserCoverImage);
-router.route("/channel/:username").get(verifyJWT, getUserChannelProfile);
-router.route("/history").get(verifyJWT, getWatchHistory);
+// Secured routes requiring JWT verification
+router.route("/logout").post(verifyJWT, logoutUser); // Logout route
+router.route("/refresh-token").post(refreshAccessToken); // Refresh token route
+router.route("/change-password").post(verifyJWT, changeCurrentPassword); // Change password route
+router.route("/current-user").get(verifyJWT, getCurrentUser); // Get current user route
+router.route("/update-account").patch(verifyJWT, updateAccountDetails); // Update account route
+router.route("/avatar").patch(verifyJWT, upload.single("avatar"), updateUserAvatar); // Update avatar route
+router.route("/cover-image").patch(verifyJWT, upload.single("coverImage"), updateUserCoverImage); // Update cover image route
+router.route("/channel/:username").get(verifyJWT, getUserChannelProfile); // Get user channel profile route
+router.route("/history").get(verifyJWT, getWatchHistory); // Get watch history route
 
 // DARK-MODE FEATURE
 // router.route("/user/preferences").put(verifyJWT, updateUserPreferences);

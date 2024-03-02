@@ -6,21 +6,24 @@ import dotenv from "dotenv";
 import connectDB from "./db/index.js";
 
 const app = express();
-
+// Middleware for parsing JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Setting up routes
 app.use("/api/currency", currencyRoutes);
 app.use("/api/weather", weatherRoutes);
 // app.use("/api/users", userRoutes);
 
 // require('dotenv').config({path: './env'})
+// Loading environment variables from .env file
 
 dotenv.config({
   path: "/.env",
 });
-
+// Connecting to the database
 connectDB()
   .then(() => {
+        // Starting the server
     app.listen(process.env.PORT || 5500, () => {
       console.log(` Server is running at port:  ${process.env.PORT}`);
     });
@@ -28,6 +31,9 @@ connectDB()
   .catch((err) => {
     console.log("MongoDB connection failed !!!", err);
   });
+
+
+  
 
 /*
 
