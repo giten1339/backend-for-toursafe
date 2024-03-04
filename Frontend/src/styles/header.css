@@ -1,0 +1,12 @@
+
+.img {
+    display: flex;
+    align-items: left;
+  
+  }
+  
+  .img img {
+    width: 100px; 
+    height: auto; 
+  
+  }
