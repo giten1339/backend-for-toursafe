@@ -9,8 +9,9 @@ import userRouter from './routes/user.routes.js';
 import currencyRoutes from './routes/currencyRoutes.js';
 import weatherRoutes from './routes/weatherRoutes.js';
 import { fetchExchangeRates } from './db/services/currencyservice.js';
-import reservationRoutes from './routes/reservationRoutes.js'; //
+import reservationRoutes from './routes/reservationRoutes.js'; 
 import locationsRouter from './routes/location.route.js';
+
 
 // Creating express app instance
 const app = express();
