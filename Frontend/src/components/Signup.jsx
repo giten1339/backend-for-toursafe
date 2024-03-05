@@ -1,23 +1,24 @@
-// src/components/Login.js
-import React, { useState } from "react";
-import "../styles/login.css";
 
-export const Login = () => {
+import React, { useState } from "react";
+import "../styles/signup.css"; // Create a new CSS file for the signup page styles
+
+export const Signup = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    // Implement your login logic here
+    // Implement your signup logic here
     console.log(
-      `Logging in with username: ${username} and password: ${password}`
+      `Signing up with username: ${username}, email: ${email}, and password: ${password}`
     );
   };
 
   return (
-    <div className="login-container">
-      <h2 style={{ color: "grey" }}>Login</h2>
-      <form onSubmit={handleLogin}>
+    <div className="signup-container">
+      <h2 style={{ color: "grey" }}>Sign Up</h2>
+      <form onSubmit={handleSignup}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
           <input
@@ -25,6 +26,16 @@ export const Login = () => {
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -38,7 +49,7 @@ export const Login = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );
