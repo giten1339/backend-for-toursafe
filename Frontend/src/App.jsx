@@ -6,8 +6,8 @@ import { Signup } from "./components/Signup";
 import { Header } from "./components/Header";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-// import { Contact } from "./components/Contact";
-// import { Services } from "./components/Services";
+import { Contact } from "./components/Contact";
+import { Service } from "./components/Service";
 function App() {
   return (
     <Router>
@@ -16,8 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* <Route path="/contact" element={<Contact />} />
-        <Route path="/services" element={<Services />} /> */}
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/service" element={<Service />} />
       </Routes>
       <Footer />
     </Router>
