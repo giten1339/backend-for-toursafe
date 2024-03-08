@@ -1,8 +1,8 @@
 // Imports
 import { $, $$ } from './helpers.js';
 import { router, geocoder } from './here.js';
-import { center } from './config.js';
-import { calculateIsoline, marker } from './app.js';
+import { center } from '../../src/config.js';
+import { calculateIsoline, marker } from '../../src/app.js';
 import HourFilter from './HourFilter.js';
 import MapRotation from './MapRotation.js';
 import Search from './Search.js';

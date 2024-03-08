@@ -1,5 +1,5 @@
-// Import router from app1.js
-import { router } from './app1.js';
+// Import router from app.js
+import { router } from './app.js';
 
 // Define maximum range for isolines
 const isolineMaxRange = {

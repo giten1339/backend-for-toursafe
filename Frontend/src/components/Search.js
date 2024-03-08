@@ -1,5 +1,5 @@
 import { $ } from './helpers.js';
-import { autocompleteGeocodeUrl, requestGeocode } from './here.js';
+import { autocompleteGeocodeUrl, requestGeocode } from '../here.js';
 import { center } from './config.js';
 import { calculateIsoline, marker } from './app.js';
 
