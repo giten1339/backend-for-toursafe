@@ -1,4 +1,3 @@
-// Importing required modules
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -8,24 +7,18 @@ import cookieParser from 'cookie-parser';
 import userRouter from './routes/user.routes.js';
 import currencyRoutes from './routes/currencyRoutes.js';
 import weatherRoutes from './routes/weatherRoutes.js';
-import { fetchExchangeRates } from './db/services/currencyservice.js';
-import reservationRoutes from './routes/reservationRoutes.js'; 
+import reservationRoutes from './routes/reservationRoutes.js';
 import locationsRouter from './routes/location.route.js';
 
-
-// Creating express app instance
-const app = express();
-
-// Setting up port
-const PORT = process.env.PORT || 5500;
-
 // MongoDB setup
-mongoose.connect('mongodb://localhost/currency_converter', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const mongoURI = "mongodb://localhost/currency_converter";
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// Express app setup
+const app = express();
+const PORT = process.env.PORT || 5500;
 
 // Middleware setup
 app.use(cors({
@@ -53,12 +46,6 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     console.error('MongoDB connection error:', error);
     process.exit(1); // Exit process on connection error
   });
-
-// Fetch exchange rates initially
-fetchExchangeRates();
-
-// Update exchange rates every hour
-setInterval(fetchExchangeRates, 3600000);
 
 // Start server
 app.listen(PORT, () => {

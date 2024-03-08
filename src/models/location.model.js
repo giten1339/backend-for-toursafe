@@ -1,8 +1,5 @@
 import mongoose from 'mongoose';
-
-const { Schema, model } = mongoose;
-
-const locationSchema = new Schema({
+const locationSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -17,4 +14,6 @@ const locationSchema = new Schema({
   }
 });
 
-export default model('Location', locationSchema);
+const Location = mongoose.model('Location', locationSchema);
+
+module.exports = Location;
