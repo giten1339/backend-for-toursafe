@@ -1,17 +1,7 @@
-/* Set the background color of the entire page */
-body {
-  background: white;
-  margin: 0; /* Remove default margin to ensure full width */
-  display: flex; /* Use flex to center contents horizontally */
-  justify-content: center; /* Center contents horizontally */
-  align-items: center; /* Center contents vertically */
-  min-height: 100vh; /* Ensure full viewport height */
-}
-
 /* Add the login form styles */
 .login-container {
-  background: whitesmoke;
-  width: 100%;
+  background: white;
+  /* Removed width: 100%; to allow full width within max-width */
   max-width: 800px; /* Adjust the maximum width as needed */
   padding: 3rem;
   border-radius: 8px;
@@ -23,9 +13,8 @@ body {
 
 .loginbox {
   display: flex;
-  flex-direction: column; /* Stack children vertically */
+  flex-direction: row; /* Arrange login-left and login-right horizontally */
   align-items: center; /* Center contents horizontally */
-  min-height: 100vh;
 }
 
 .login-left {
@@ -53,8 +42,7 @@ body {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+  width: 100%; /* Fills the remaining space within .login-right */
 }
 
 .form-group {
@@ -75,7 +63,6 @@ input {
 }
 
 button {
-  background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -84,11 +71,5 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
-}
-
-@media screen and (max-width: 768px) {
-  .loginbox {
-    grid-template-columns: 1fr;
-  }
+  background-color: yellow;
 }

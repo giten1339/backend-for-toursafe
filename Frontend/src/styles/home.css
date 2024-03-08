@@ -41,14 +41,14 @@
   padding: 1rem 3rem;
   font-size: 1rem;
   border: none;
-  color: lightblue;
+  color: white;
   background: #000;
   cursor: pointer;
   border-radius: 50px;
 }
 
 .btn:hover {
-  background: #fff;
+  background: yellow;
   color: #000;
 }
 
